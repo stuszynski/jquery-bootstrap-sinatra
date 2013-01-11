@@ -3,17 +3,18 @@ require "erb"
 require "sqlite3"
 
 set :public_folder, Proc.new { File.join(root, "assets") }
-@db = SQLite3::Database.open "db/data.db"
+
 # obrazek [id, nazwa, opis, adres linku, adres miniaturki]
 configure do
 	
 	#enable :sessions
-	@db.execute "CREATE TABLE IF NOT EXISTS Images(Id INTEGER PRIMARY KEY, 
-        Name TEXT, Disc TEXT, link TEXT)"
-   
+	#@db.execute "CREATE TABLE IF NOT EXISTS Images(Id INTEGER PRIMARY KEY, Name TEXT, Disc TEXT, link TEXT)"
+    
 end
 
 get '/' do
+	@db = SQLite3::Database.open "db/data.db"
+	@db.results_as_hash = true
 	@images = @db.execute "SELECT * from Images"
 	erb :index2
 end

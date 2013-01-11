@@ -77,6 +77,14 @@
         </div>
       </div>
 
+      <% @images.each do |img| %>
+  <tr>
+    <td><%= img['Id'] %></td>
+    <td><%= img['Name'] %></td>
+    <td><%= img['Disc'] %></td>
+    <td><%= "<img src='#{img['link']}'>" %></td>
+  </tr>
+<% end %>
       
       <footer>
         <p>&copy; by Stanisław Tuszyński</p>
