@@ -10,4 +10,10 @@ technikalia:
 	Frontend: jquery + bootstrap + własny plugin inicjujący galerie w wybranym divie.
 
 
-test
+Instalacja:
+
+	bundle install
+
+Uruchamianie:
+
+	ruby app.rb
