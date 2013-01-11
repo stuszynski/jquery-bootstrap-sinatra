@@ -8,3 +8,6 @@ technikalia:
 
 	Silnik: sinatra + sqlite
 	Frontend: jquery + bootstrap + własny plugin inicjujący galerie w wybranym divie.
+
+
+test
