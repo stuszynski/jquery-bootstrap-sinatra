@@ -1,0 +1,16 @@
+body {
+	padding-top: 60px;
+	background-image: url('img/1.jpg');
+	background-repeat:no-repeat;
+	}
+
+pre {
+	background-color: white;
+	padding: 10px;
+	margin: 10px;
+}
+
+.photo {
+	zoom: 200%;
+}
+
