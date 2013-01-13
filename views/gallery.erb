@@ -1,0 +1,13 @@
+<ul class="thumbnails">
+<% @images.each do |img| %>
+      <li class="span4">
+        <a href=<%"'#{img['link']}'"%> class="thumbnail">
+      <!-- <img data-src="holder.js/300x200" alt=""> -->
+        <%= "<a href='#{img['link']}'><img  width='300px' src='#{img['link']}' rel='tooltip' title='#{img['Name']}' class='img-polaroid'></a>" %>
+        </a>
+
+  </li>
+<% end %>
+</ul>
+      
+    
