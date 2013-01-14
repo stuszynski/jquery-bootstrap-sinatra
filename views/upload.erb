@@ -1,0 +1,27 @@
+<div class="span8">
+  <legend>Image Uploader</legend>
+  <div class="span4">
+      
+      <p>Wprowadź dane oraz naciśnij wyślij! :D</p>
+</div>
+  
+
+<div class="span2">
+<form action="/upload" method="post" enctype='multipart/form-data'>
+  <fieldset>
+    
+    <label>Nazwa</label>
+    <input type="text" placeholder="Wpisz nazwę obrazka" name='title'>
+    <label>Opis obrazka</label>
+    <textarea  rows='10' cols='200' placeholder="Opisz swój obrazek" name='opis'> </textarea>
+    <span class="help-block muted">Wybierz obrazek w formacie .jpg</span>
+    <label class="checkbox"> Wybierz plik!></label>
+    <input type="file" name="image">
+    <br />
+    <button type="submit" class="btn btn-primary btn-large">Wyślij!</button>
+  </fieldset>
+</form>
+
+</div>
+
+</div>

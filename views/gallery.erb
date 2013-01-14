@@ -1,20 +1,20 @@
-<div class="container">
-<div class="hero-unit">
+<!-- <div class="container">
+<!--<div class="hero-unit">
 <p> Drop box ?</p>
 </div>
-</div>
+</div>-->
 
 <ul class="thumbnails">
 <%  @images.each do |img| %>
       <li class="span4">
-        <a href=<%"'#{img['link']}'"%> class="thumbnail">
+        
       <!-- <img data-src="holder.js/300x200" alt=""> -->
-        <%= "<img id='#{img['Id']}' width='300px' src='#{img['link']}' rel='tooltip' data-original-title='#{img['Name']}' class='photo img-polaroid'>" %>
-        </a>
+        <%= "<img id='#{img['Id']}' width='300px' src='#{img['link']}' rel='tooltip' data-original-title='#{img['Name']}' class='img-polaroid'>" %>
+        
 
   </li>
 <% end %>
 
-</ul>
+</ul> 
       
     

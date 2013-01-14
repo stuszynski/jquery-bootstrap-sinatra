@@ -24,13 +24,28 @@
           $(this).parent().addClass('active');
       });
 
-     
+     $(".thumbnails li img").live({
+                mouseenter:
+                function () {
+                    $(this).css('zoom','1.01');
+                },mouseleave:
+                function () {
+                    $(this).css('zoom','1');
+                }
+              });
 
-      $('.photo').hover( 
-        function(){
-        $(this).css('zoom','2');
-      },function(){
-        $(this).css('zoom','1');
-        });
+     /* $('img').hover( function(){
+        var link = $(this).attr("src");
 
+
+        console.log("Najechales na obrazek o adresie " + link);
+
+
+
+        $('body').css('background-image','url('+link+')');
+        $('body').css('background-image','url('+link+')');
+
+      }); */
+
+      
     });
