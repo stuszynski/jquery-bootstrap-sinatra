@@ -20,7 +20,10 @@ configure do
     
 end
 
-get '/' do
+
+
+
+get '/'  do
 	db_connect
 	@images = @db.execute "SELECT * from Images"
 	erb :index

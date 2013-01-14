@@ -7,17 +7,24 @@
       	'placement' : 'bottom'
       });
 
-      $('#galeria').click( function (){
-          $.get('/gallery', function(data) {
+      $('.nav li a').click( function (){
+
+        var value = $(this).text().toLowerCase();
+        var link = '/' + value;
+
+        
+        console.log('Pytam o stronke "/'+ value +'"' );
+
+          $.get(
+            link,
+             function(data) {
               $('div#site').html(data);
         });
+          $(this).parent().parent().find('.active').removeClass('active');
+          $(this).parent().addClass('active');
       });
 
-      $('#galeria').click( function (){
-          $.get('/gallery', function(data) {
-              $('div#uruchom').html(data);
-        });
-      });
+     
 
       $('.photo').hover( 
         function(){
