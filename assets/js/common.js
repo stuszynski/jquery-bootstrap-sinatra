@@ -2,7 +2,8 @@
     $(document).ready(function(){
 
       //$('#topbar').dropdown();
-     
+     $('.dropdown-toggle').dropdown();
+
       $('.img-polaroid').tooltip({
       	'placement' : 'bottom'
       });

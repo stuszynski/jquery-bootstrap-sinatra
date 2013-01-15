@@ -10,7 +10,8 @@
         <!--[if lt IE 9]>
           <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
-        <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+        <!--<link href="css/bootstrap.min.css" rel="stylesheet" media="screen"> -->
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
         <link rel="stylesheet" type="text/css" href="css/style.css">
         <script type="text/javascript" src="js/jquery.min.js"></script>
         <script type="text/javascript" src="js/bootstrap.min.js"></script>
@@ -27,7 +28,15 @@
         <li><a href="#" class='menu'>Gallery</a></li>
         <li><a href="#" class='menu'>Upload</a></li>
         </ul>
-        <button id='sign' class="btn btn-info">Zaloguj się!</button>
+          <div class="btn-group pull-right">
+              <a class="btn btn-info dropdown-toggle" data-toggle="dropdown" href="#">
+                Zaloguj Się!
+                <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="#">dupa!</a></li>
+              </ul>
+        </div>
         </div>
     </div>
 
@@ -41,7 +50,7 @@
             <h1>Witaj!</h1>
             <br>
             <p>Przed tobą mój zaliczeniowy projekt z jquery-bootstrap. Stworzony z myślą o użytkownikach komputerów jak i tabletów. Okraszony Sinatra i innymi ciekawostkami.</p>
-            <p>Podstawowym założeniem jest tutaj galeria zdjęć i jej 'płynność', czyli asynchroniczne dogrywanie się poszczegówlnych elementów galeri w miare ich użytkownia przez wielu użytkowników.</p>
+            <p class='text-info'><i>Podstawowym założeniem jest tutaj galeria zdjęć i jej 'płynność', czyli asynchroniczne dogrywanie się poszczególnych elementów galerii w miare ich użytkownia przez wielu użytkowników.</i></p> 
             <p>Moim marzeniem jest wprowadzenie swoistego podglądu zachowań znanego mi. z Google Docks, gdzie każda zmiania będzie poświetlana nickiem użytkownika który je dokonał.</p>
             <p class="muted">Stanisław Tuszyński</p>
 
