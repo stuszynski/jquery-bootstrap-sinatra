@@ -29,3 +29,15 @@ pre {
 .dropdown-menu {
      background-color: #2F2A6C; // defaults to #333
  }
+
+ #sign{
+ 	float: right;
+ }
+
+ .hero-unit p{
+ 	text-align: justify;
+ }
+
+ .hero-unit .muted{
+ 	text-align: right;
+ }
