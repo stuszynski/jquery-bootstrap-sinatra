@@ -91,12 +91,21 @@ end
 get '/api/:id' do
 	content_type :json
 
+@images
+
 	db_connect
+
 	if params[:id] == 'all'
-	images = @db.execute "SELECT * from Images"
-	
-	images.to_json
+		@images = @db.execute "SELECT * from Images"
+		@images.to_json
+	elsif params[:id] == 'last'
+		@images = @db.execute "SELECT * from Images"
+		@images.last.to_json
+	elsif params[:id] != nil
+		@images = @db.execute "SELECT * from Images WHERE Id='#{params[:id]}'"
+		@images = @images.nil? ? @images : { :error => 'Nie ma takiego obrazka' }
+		@images.to_json
 	else
-		{ :error => 'Blad zapytania' }.to_json
+		{ :error => 'Nie ma takiego obrazka' }.to_json
 	end
 end
