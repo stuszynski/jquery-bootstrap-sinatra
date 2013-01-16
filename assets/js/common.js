@@ -26,6 +26,13 @@
       });
 
      $(".thumbnails li img").live({
+                click: 
+                function(){
+                  var link = $(this).attr("src");
+                  img = "<img src="+link+">"
+                  $('.modal-body').html(img);
+                  console.log("click");
+                },
                 mouseenter:
                 function () {
                     $(this).css('zoom','1.01');
@@ -35,18 +42,7 @@
                 }
               });
 
-     /* $('img').hover( function(){
-        var link = $(this).attr("src");
+     
 
-
-        console.log("Najechales na obrazek o adresie " + link);
-
-
-
-        $('body').css('background-image','url('+link+')');
-        $('body').css('background-image','url('+link+')');
-
-      }); */
-
-      
+      $('#myModal').modal('toggle');
     });
