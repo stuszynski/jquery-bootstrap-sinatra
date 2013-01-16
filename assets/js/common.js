@@ -29,7 +29,9 @@
                 click: 
                 function(){
                   var link = $(this).attr("src");
+                  var name = $(this).attr("data-original-title");
                   img = "<img src="+link+">"
+                  $('#myModalLabel').html(name);
                   $('.modal-body').html(img);
                   console.log("click");
                 },

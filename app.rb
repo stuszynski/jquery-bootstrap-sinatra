@@ -1,6 +1,7 @@
 require "sinatra"
 require "erb"
 require "sqlite3"
+require 'json'
 
 def db_connect
 	@db = SQLite3::Database.open "db/data.db"
@@ -21,9 +22,17 @@ configure do
     
 end
 
+before do
+enable :sessions
+
+end
 
 get '/'  do
 	db_connect
+
+	 session['counter'] ||= 0 
+     session['counter'] += 1
+	
 	@images = @db.execute "SELECT * from Images"
 	erb :index
 	#db_disconnect
@@ -63,7 +72,7 @@ if request.xhr?
 	#db_disconnect
     else
    	#"To nie jest ajax!"
-   	erb :index
+   		redirect '/'
 end
 end
 
@@ -79,3 +88,15 @@ get '/last' do
     "The last id of the inserted row is #{id}"
 end
 
+get '/api/:id' do
+	content_type :json
+
+	db_connect
+	if params[:id] == 'all'
+	images = @db.execute "SELECT * from Images"
+	
+	images.to_json
+	else
+		{ :error => 'Blad zapytania' }.to_json
+	end
+end
