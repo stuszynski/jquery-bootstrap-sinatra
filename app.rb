@@ -51,26 +51,25 @@ post '/upload' do
 	File.open('assets/img/' + params['image'][:filename],"w") do |f|
 		f.write(params['image'][:tempfile].read())
 	end
-	return "Dodawanie udane!"
-
-
+		return "Dodawanie udane!"
 end
 
 get '/gallery' do
 
-	if request.xhr? 
+if request.xhr? 
 	db_connect
 	@images = @db.execute "SELECT * from Images"
 	erb :gallery 
 	#db_disconnect
     else
-    	"To nie jest ajax!"
-	end
+   	#"To nie jest ajax!"
+   	erb :index
+end
 end
 
-get '/file' do
+get '/file/:dupa' do
   attachment "info.txt"
-  "store it!"
+  "#{:dupa}"
 end
 
 get '/last' do
@@ -79,3 +78,4 @@ get '/last' do
 	id = @db.last_insert_row_id
     "The last id of the inserted row is #{id}"
 end
+
