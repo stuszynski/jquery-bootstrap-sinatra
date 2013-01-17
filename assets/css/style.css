@@ -7,7 +7,9 @@ body {
 	background-repeat: no-repeat;
 	background-attachment:fixed;
 	background-position:center; */
-	
+	background-repeat: no-repeat;
+	background-attachment:fixed;
+	background-position:center;
 	}
 
 
@@ -27,3 +29,7 @@ body {
  /*.carousel-inner div img {
  	border-radius: 25px;
  } */
+
+#myModal{
+	
+}

@@ -4,7 +4,10 @@ $(document).ready(function(){
 
       //$('#topbar').dropdown();
       $('.dropdown-toggle').dropdown();
-
+  $('.dropdown input, .dropdown label').click(function(e) {
+    e.stopPropagation();
+    $('.dropdown-menu').toggle();
+  });
       $('.thumbnail').tooltip({
       	'placement' : 'bottom'
       });
@@ -43,8 +46,14 @@ $(".thumbnails li img").live({
     img = "<img src="+link+">"
     $('#myModalLabel').html(name);
     $('.modal-body').html(img);
+    
     console.log("click");
-  }
+  }/*,
+  mouseover:
+  function(){
+    var link = $(this).attr("src");
+    $('body').css('background-image','url('+link+')');
+  }*/
 });
 
 
