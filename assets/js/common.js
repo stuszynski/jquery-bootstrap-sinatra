@@ -62,7 +62,6 @@ function gallery_init(){
      for (var i = 0 ; i < data.length ; i++) {
        $('.thumbnails').append(formImage(data[i]));
      };
-     console.log(data);
 
     // $('.thumbnails').append(formImage(data));
 
@@ -73,6 +72,7 @@ function gallery_init(){
           }); */
   $('div#site').append('</ul>');
   $('div#site').append(Modal());
+  setInterval(update(),5000);
 } );
 }
 
@@ -81,7 +81,7 @@ function formImage(image){
 
   return '<li class="span2">'+
   '<a href="#myModal" role="button"  data-toggle="modal" class="thumbnail">'+
-  '<img src="'+image.link+'" alt="'+image.Name+'" data-original-title="'+image.Name+'">'+
+  '<img id="'+image.Id+'"src="'+image.link+'" alt="'+image.Name+'" data-original-title="'+image.Name+'">'+
   '</a></li>';
 
 }
@@ -101,3 +101,20 @@ function Modal(){
   '</div>'+
   '</div>'
 }
+
+
+function update(){
+   $.get( '/api/last',
+    function(data) {
+      last_have = $('.thumbnail img:last').attr('id');
+      console.log("Ostatni posiadany: "+last_have);
+
+      if (last_have != data.Id) {
+        $('.thumbnails').append(formImage(data));
+      } else{
+        console.log ("Brak nowych zdjęć!");
+      };
+    });
+   
+   }
+
