@@ -1,82 +1,82 @@
     <!DOCTYPE html>
     <html lang="en">
-      <head>
-        <meta charset="utf-8">
-        <title>St. Gallery</title>
-        <meta name="description" content="">
-        <meta name="author" content="">
+    <head>
+      <meta charset="utf-8">
+      <title>St. Gallery</title>
+      <meta name="description" content="">
+      <meta name="author" content="">
 
-        <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+      <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
         <!--[if lt IE 9]>
           <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
-        <!--<link href="css/bootstrap.min.css" rel="stylesheet" media="screen"> -->
-        <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-        <link rel="stylesheet" type="text/css" href="css/style.css">
-        <script type="text/javascript" src="js/jquery.min.js"></script>
-        <script type="text/javascript" src="js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="js/common.js"></script>
-    </head>
+          <![endif]-->
+          <!--<link href="css/bootstrap.min.css" rel="stylesheet" media="screen"> -->
+          <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+          <link rel="stylesheet" type="text/css" href="css/style.css">
+          <script type="text/javascript" src="js/jquery.min.js"></script>
+          <script type="text/javascript" src="js/bootstrap.min.js"></script>
+          <script type="text/javascript" src="js/common.js"></script>
+        </head>
 
-      <body>
-     
+        <body>
 
 
-    <div class="navbar">
-      <div class="navbar-inner">
-        <a class="brand" href="/">St. Gallery</a>
-      <ul class="nav">
-        <li><a href="#" class='menu'>Gallery</a></li>
-        <li><a href="#" class='menu'>Upload</a></li>
-        </ul>
-          <div class="btn-group pull-right">
-              <a class="btn btn-info dropdown-toggle" data-toggle="dropdown" href="#">
-                Zaloguj Się!
-                <span class="caret"></span>
-              </a>
-              <ul class="dropdown-menu">
-                <li><a href="#">dupa!</a></li>
+
+          <div class="navbar">
+            <div class="navbar-inner">
+              <a class="brand" href="/">St. Gallery</a>
+              <ul class="nav">
+                <li><a href="#" class='menu'>Gallery</a></li>
+                <li><a href="#" class='menu'>Upload</a></li>
               </ul>
-        </div>
-        </div>
-    </div>
+              <div class="btn-group pull-right">
+                <a class="btn btn-info dropdown-toggle" data-toggle="dropdown" href="#">
+                  Zaloguj Się!
+                  <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">dupa!</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
 
 
-     <div class="row">
+          <div class="row">
 
-        <div class="container" id='site'>
-           <legend>Najnowsze 5 zdjęć: </legend>
-          <div id="myCarousel" class="carousel slide">
-  <!-- Carousel items -->
-  <div class="carousel-inner">
-    <%= "<div class='active item'><img src='#{@images[0]['link']}'></div>" %>
-    <% @images.each do |img| %>
-    <%= "<div class='item'><img src='#{img['link']}'></div>" %>
-    <% end %>
-  </div>
-  <!-- Carousel nav -->
-  <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-  <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
-</div>
-          <!-- Main hero unit for a primary marketing message or call to action -->
-          <div class="hero-unit">
-            <h1>Witaj!</h1>
-            <br>
-            <p>Przed tobą mój zaliczeniowy projekt z jquery-bootstrap. Stworzony z myślą o użytkownikach komputerów jak i tabletów. Okraszony Sinatra i innymi ciekawostkami.</p>
-            <p class='text-info'><i>Podstawowym założeniem jest tutaj galeria zdjęć i jej 'płynność', czyli asynchroniczne dogrywanie się poszczególnych elementów galerii w miare ich użytkownia przez wielu użytkowników.</i></p> 
-            <p>Moim marzeniem jest wprowadzenie swoistego podglądu zachowań znanego mi. z Google Docs, gdzie każda zmiania będzie poświetlana nickiem użytkownika który je dokonał.</p>
-            <p class="muted">Stanisław Tuszyński</p>
+            <div class="container" id='site'>
+             <legend>Najnowsze 5 zdjęć: </legend>
+             <div id="myCarousel" class="carousel slide">
+              <!-- Carousel items -->
+              <div class="carousel-inner">
 
-             </div>
-     
-          <footer>
-            <p class="pull-right">All &copy; except photos are by Stanisław Tuszyński ;)</p>
-            <p class="mutted">
-              <%= "Jestes tutaj: #{session['counter']} raz." %>
-            </p>
-          </footer>
+                <% @images.each do |img| %>
+                <%= image = @images.first == img ? "<div class='active item'><img src='#{img['link']}'></div>" : "<div class='item'><img src='#{img['link']}'></div>" %>
+                <% end %>
+              </div>
+              <!-- Carousel nav -->
+              <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+              <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+            </div>
+            <!-- Main hero unit for a primary marketing message or call to action -->
+            <div class="hero-unit">
+              <h1>Witaj!</h1>
+              <br>
+              <p>Przed tobą mój zaliczeniowy projekt z jquery-bootstrap. Stworzony z myślą o użytkownikach komputerów jak i tabletów. Okraszony Sinatra i innymi ciekawostkami.</p>
+              <p class='text-info'><i>Podstawowym założeniem jest tutaj galeria zdjęć i jej 'płynność', czyli asynchroniczne dogrywanie się poszczególnych elementów galerii w miare ich użytkownia przez wielu użytkowników.</i></p> 
+              <p>Moim marzeniem jest wprowadzenie swoistego podglądu zachowań znanego mi. z Google Docs, gdzie każda zmiania będzie poświetlana nickiem użytkownika który je dokonał.</p>
+              <p class="muted">Stanisław Tuszyński</p>
 
-       </div>
-      </div> 
+            </div>
+
+            <footer>
+              <p class="pull-right">All &copy; except photos are by Stanisław Tuszyński ;)</p>
+              <p class="mutted">
+                <%= "Jestes tutaj: #{session['counter']} raz." %>
+              </p>
+            </footer>
+
+          </div>
+        </div> 
       </body>
-    </html>
+      </html>
