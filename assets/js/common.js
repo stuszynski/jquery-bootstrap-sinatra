@@ -1,4 +1,5 @@
 
+
 $(document).ready(function(){
 
       //$('#topbar').dropdown();
@@ -8,38 +9,95 @@ $(document).ready(function(){
       	'placement' : 'bottom'
       });
 //obsługa menu
-      $('.nav li a').click( function (){
+$('.nav li a').click( function (){
 
-        var value = $(this).text().toLowerCase();
-        var link = '/' + value;
+  var value = $(this).text().toLowerCase();
+  var link = '/' + value;
 
-        
-        console.log('Pytam o stronke "/'+ value +'"' );
 
-        $.get(
-          link,
-          function(data) {
-            $('div#site').html(data);
-          });
-        $(this).parent().parent().find('.active').removeClass('active');
-        $(this).parent().addClass('active');
+  console.log('Pytam o stronke "/'+ value +'"' );
+  if (value != 'gallery') {
+    $.get(
+      link,
+      function(data) {
+        $('div#site').html(data);
       });
+
+  };
+
+  if (value == 'gallery') {
+    gallery_init();
+  };
+
+  $(this).parent().parent().find('.active').removeClass('active');
+  $(this).parent().addClass('active');
+
+});
 
 //obsługa galerii
-      $(".thumbnails li img").live({
-        click: 
-        function(){
-          var link = $(this).attr("src");
-          var name = $(this).attr("data-original-title");
-          img = "<img src="+link+">"
-          $('#myModalLabel').html(name);
-          $('.modal-body').html(img);
-          console.log("click");
-        }
-      });
+$(".thumbnails li img").live({
+  click: 
+  function(){
+    var link = $(this).attr("src");
+    var name = $(this).attr("data-original-title");
+    img = "<img src="+link+">"
+    $('#myModalLabel').html(name);
+    $('.modal-body').html(img);
+    console.log("click");
+  }
+});
 
 
 //modal i caruzela
-      $('#myModal').modal('toggle');
-      $('.carousel').carousel()
-    });
+$('#myModal').modal('toggle');
+$('.carousel').carousel()
+});
+
+
+function gallery_init(){
+  $.get( '/api/all',
+    function(data) {
+     $('div#site').html('<ul class="thumbnails">');
+
+     for (var i = 0 ; i < data.length ; i++) {
+       $('.thumbnails').append(formImage(data[i]));
+     };
+     console.log(data);
+
+    // $('.thumbnails').append(formImage(data));
+
+         /*  for (var img in data){
+              element = $.parseJSON(img);
+              alert(element.link);
+            }  
+          }); */
+  $('div#site').append('</ul>');
+  $('div#site').append(Modal());
+} );
+}
+
+
+function formImage(image){
+
+  return '<li class="span2">'+
+  '<a href="#myModal" role="button"  data-toggle="modal" class="thumbnail">'+
+  '<img src="'+image.link+'" alt="'+image.Name+'" data-original-title="'+image.Name+'">'+
+  '</a></li>';
+
+}
+
+function Modal(){
+  return '<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">'+
+  '<div class="modal-header">'+
+  '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
+  '<h3 id="myModalLabel">Fotka</h3>'+
+  '</div>'+
+  '<div class="modal-body">'+
+  '<p>One fine body…</p>'+
+  '</div>'+
+  '<div class="modal-footer">'+
+  '<button class="btn" data-dismiss="modal" aria-hidden="true">Zamknij</button>'+
+  '<!-- <button class="btn btn-primary">Save changes</button> -->'+
+  '</div>'+
+  '</div>'
+}
