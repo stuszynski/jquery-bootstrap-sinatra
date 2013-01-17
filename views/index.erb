@@ -45,7 +45,19 @@
      <div class="row">
 
         <div class="container" id='site'>
-
+           <legend>Najnowsze 5 zdjęć: </legend>
+          <div id="myCarousel" class="carousel slide">
+  <!-- Carousel items -->
+  <div class="carousel-inner">
+    <%= "<div class='active item'><img src='#{@images[0]['link']}'></div>" %>
+    <% @images.each do |img| %>
+    <%= "<div class='item'><img src='#{img['link']}'></div>" %>
+    <% end %>
+  </div>
+  <!-- Carousel nav -->
+  <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+  <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+</div>
           <!-- Main hero unit for a primary marketing message or call to action -->
           <div class="hero-unit">
             <h1>Witaj!</h1>
@@ -55,40 +67,10 @@
             <p>Moim marzeniem jest wprowadzenie swoistego podglądu zachowań znanego mi. z Google Docs, gdzie każda zmiania będzie poświetlana nickiem użytkownika który je dokonał.</p>
             <p class="muted">Stanisław Tuszyński</p>
 
-             
-            <!--  <pre class="prettyprint"  >
-    class Voila {
-      public:
-        // Voila
-        static const string VOILA = "Voila";
-
-        // will not interfere with embedded tags.
-      }
-              </pre> -->
-            
-          </div>
-
-          <!-- Example row of columns 
-          <div class="row">
-            <div class="span6">
-              <h2>Heading</h2>
-              <p>Etiam porta sem malesuada magna mollis euismod. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
-              <p><a class="btn" href="#">View details &raquo;</a></p>
-            </div>
-            <div class="span5">
-              <h2>Heading</h2>
-               <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-              <p><a class="btn" href="#">View details &raquo;</a></p>
-           </div>
-            <div class="span5">
-              <h2>Heading</h2>
-              <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-              <p><a class="btn" href="#">View details &raquo;</a></p>
-            </div>
-          </div>
-    -->
+             </div>
+     
           <footer>
-            <p>&copy; by Stanisław Tuszyński</p>
+            <p class="pull-right">All &copy; except photos are by Stanisław Tuszyński ;)</p>
             <p class="mutted">
               <%= "Jestes tutaj: #{session['counter']} raz." %>
             </p>

@@ -33,7 +33,7 @@ get '/'  do
 	 session['counter'] ||= 0 
      session['counter'] += 1
 	
-	@images = @db.execute "SELECT * from Images"
+	@images = @db.execute "SELECT * from Images LIMIT 5"
 	erb :index
 	#db_disconnect
 end
