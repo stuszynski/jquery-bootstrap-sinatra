@@ -122,6 +122,7 @@ function update(){
       } else{
         console.log ("Brak nowych zdjęć!");
       };
+  window.setTimeout(update, 2000);
     });
    
    }
