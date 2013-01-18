@@ -62,6 +62,12 @@ else
    end
 end
 
+get '/delete/:id' do
+	db_connect
+	@images = @db.execute "DELETE * from Images WHERE Id='#{params[:id]}' LIMIT 1"
+	"Usuwanie udane!"
+end
+
 get '/last' do
 	db_connect
 	@images = @db.execute "SELECT * from Images"
