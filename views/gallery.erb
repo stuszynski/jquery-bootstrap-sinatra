@@ -1,14 +1,8 @@
-<!-- <div class="container">
-<!--<div class="hero-unit">
-<p> Drop box ?</p>
-</div>
-</div>-->
+
 
 <ul class="thumbnails">
 <%  @images.each do |img| %>
       <li class="span4">
-        
-      <!-- <img data-src="holder.js/300x200" alt=""> -->
       <a href="#myModal" role="button"  data-toggle="modal" class="thumbnail">
         <%= "<img id='#{img['Id']}' width='300px' src='#{img['link']}' rel='tooltip' data-original-title='#{img['Name']}' >" %>
        </a>

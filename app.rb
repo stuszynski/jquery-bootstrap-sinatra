@@ -16,37 +16,23 @@ set :public_folder, Proc.new { File.join(root, "assets") }
 
 # obrazek [id, nazwa, opis, adres linku, adres miniaturki]
 configure do	
-	#enable :sessions
 	db_connect
 	@db.execute "CREATE TABLE IF NOT EXISTS Images(Id INTEGER PRIMARY KEY, Name TEXT, Disc TEXT, link TEXT)"
-    
 end
 
 before do
-enable :sessions
-
+	enable :sessions
 end
 
 get '/'  do
 	db_connect
 
-	 session['counter'] ||= 0 
-     session['counter'] += 1
-	
+	session['counter'] ||=0
+	session['counter'] += 1
+
 	@images = @db.execute "SELECT * from Images LIMIT 5"
 	erb :index
-	#db_disconnect
 end
-
-
-get '/photo/:id' do 
-
-#	id = :id
-#	@img = @db.query("SELECT * where id=#{id}")
-	
-#	erb :photo # a moze zapodaj jsonem? i zmontujmy to w js?
-end
-
 
 get '/upload' do
 	erb :upload
@@ -60,38 +46,33 @@ post '/upload' do
 	File.open('assets/img/' + params['image'][:filename],"w") do |f|
 		f.write(params['image'][:tempfile].read())
 	end
-		return "Dodawanie udane!"
+	return "Dodawanie udane!"
 end
 
 get '/gallery' do
 
-if request.xhr? 
-	db_connect
-	@images = @db.execute "SELECT * from Images"
-	erb :gallery 
+	if request.xhr? 
+		db_connect
+		@images = @db.execute "SELECT * from Images"
+		erb :gallery 
 	#db_disconnect
-    else
+else
    	#"To nie jest ajax!"
-   		redirect '/'
-end
-end
-
-get '/file/:dupa' do
-  attachment "info.txt"
-  "#{:dupa}"
+   	redirect '/'
+   end
 end
 
 get '/last' do
 	db_connect
 	@images = @db.execute "SELECT * from Images"
 	id = @db.last_insert_row_id
-    "The last id of the inserted row is #{id}"
+	"The last id of the inserted row is #{id}"
 end
 
 get '/api/:id' do
 	content_type :json
 
-@images
+	@images
 
 	db_connect
 

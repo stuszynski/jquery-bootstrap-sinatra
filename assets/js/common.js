@@ -41,12 +41,17 @@ $('.nav li a').click( function (){
 $(".thumbnails li img").live({
   click: 
   function(){
+    var id = $(this).attr("id");
     var link = $(this).attr("src");
     var name = $(this).attr("data-original-title");
     img = "<img src="+link+">"
     $('#myModalLabel').html(name);
     $('.modal-body').html(img);
-    
+    /*$.get('/api/'+id,
+      function (data) {
+      $('.modal-body').append('<p>'+data.Disc+'</p>');
+    });*/
+
     console.log("click");
   }/*,
   mouseover:
